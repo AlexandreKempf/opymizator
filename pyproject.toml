@@ -1,11 +1,19 @@
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+build-backend = "setuptools.build_meta"
+requires = ["setuptools>=61", "setuptools_scm[toml]>=7"]
 
 [project]
 name = "opymizator"
 description = "Opymizator is a tool to know what hyperparameter you should be using next to optimize your machine learning models."
 readme = "README.rst"
+keywords = [
+    "ai",
+    "hyperparameter",
+    "search",
+    "machine-learning",
+    "optimization",
+    "optuna"
+]
 license = {text = "MIT"}
 authors = [{name = "Alex", email = "alexandre.kempf@cri-paris.org"}]
 classifiers = [
@@ -22,6 +30,9 @@ dependencies = [
   "optuna>=3.0",
   "pyyaml>=6.0"
 ]
+
+[project.scripts]
+dvc = "opymizator.cli:cli"
 
 [project.urls]
 Issues = "https://github.com/AlexandreKempf/opymizator/issues"
@@ -110,15 +121,3 @@ strict = true
 
 [tool.ruff.lint.isort]
 known-first-party = ["opymizator"]
-
-[tool.poetry]
-name = "opymizator"
-version = "0.2.1"
-description = "Hyperparameters optimization made easy"
-authors = ["AlexandreKempf <alexandre.kempf@cri-paris.org>"]
-license = "MIT"
-readme = "README.rst"
-
-[tool.poetry.scripts]
-opymizator = 'opymizator.main:cli'
-
