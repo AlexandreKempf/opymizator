@@ -1,0 +1,23 @@
+{
+  "template": "https://github.com/iterative/py-template",
+  "commit": "e4ec95f4cfd03d4af0a8604d462ee11d07d63b42",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "project_name": "opymizator",
+      "package_name": "opymizator",
+      "friendly_name": "Opymizator",
+      "author": "Alex",
+      "email": "alexandre.kempf@cri-paris.org",
+      "github_user": "AlexandreKempf",
+      "version": "0.0.0",
+      "copyright_year": "2024",
+      "license": "MIT",
+      "docs": true,
+      "short_description": "Opymizator is a tool to know what hyperparameter you should be using next to optimize your machine learning models.",
+      "development_status": "Development Status :: 3 - Alpha",
+      "_template": "https://github.com/iterative/py-template"
+    }
+  },
+  "directory": null
+}

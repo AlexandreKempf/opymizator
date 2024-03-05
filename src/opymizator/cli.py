@@ -6,8 +6,6 @@ import csv
 
 optuna.logging.set_verbosity(optuna.logging.CRITICAL)
 
-# TODO: Rich terminal support
-# TODO: add plan_X_predictions on the CLI
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -32,7 +30,7 @@ def convert_to_ints(list_of_strings):
         return False, list_of_strings
     else:
         return True, result
-    
+
 
 def convert_to_floats(list_of_strings):
     try:
@@ -45,7 +43,7 @@ def convert_to_floats(list_of_strings):
 
 def cli():
     args = parse_args()
-    
+
     # Open configs
     config = {}
     if args.config is not None:
@@ -58,7 +56,7 @@ def cli():
         results = [float(trial[-1]) if len(trial[-1]) else None for trial in trials_csv]
         trials = {
             parameters_name[idx_param]: [
-                trial[idx_param] for idx_trial, trial in enumerate(trials_csv)
+                trial[idx_param] for idx_param, trial in enumerate(trials_csv)
             ]
             for idx_param in range(len(parameters_name) - 1)
         }
@@ -74,7 +72,7 @@ def cli():
     study = optuna.create_study(sampler=sampler)
 
     # Define distributions
-    distributions = {parameter_name: None for parameter_name in trials.keys()}
+    distributions = {parameter_name: None for parameter_name in trials}
     for name, kwargs in config.get("parameters", dict()).items():
         parameter_type = kwargs.pop("type")
         if parameter_type == "str":
@@ -150,7 +148,6 @@ def cli():
             )
             study.add_trial(trial)
 
-
     # add constraints
     for idx, result in enumerate(results):
         if result is None:
@@ -161,8 +158,9 @@ def cli():
             }
             study.enqueue_trial(params)
             recommendation = study.ask(fixed_distributions=distributions).params
-            trials_csv[idx] = [str(recommendation.get(name, '')) for name in parameters_name]
-
+            trials_csv[idx] = [
+                str(recommendation.get(name, "")) for name in parameters_name
+            ]
 
     with open(args.trials, "w") as file:
         writer_object = csv.writer(file)

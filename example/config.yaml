@@ -1,0 +1,17 @@
+sampler:
+  function: TPESampler
+  seed: 10
+
+parameters:
+  optimizer:
+    type: str
+    choices: ["adam", "sgd"]
+  lr:
+    type: float
+    low: 0.00001
+    high: 0.1
+    log: True
+  x:
+    type: int
+    low: 1
+    high: 10
