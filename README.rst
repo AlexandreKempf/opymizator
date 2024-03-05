@@ -44,7 +44,7 @@ Requirements
 - a computer 💻
 - a model or a loss function 🛠️
 - a set of hyperparameters to optimize 🎛️
-- `optuna`_ and `pyyaml`_ 📦
+- optuna_ and pyyaml_ 📦
 
 
 Installation
@@ -180,6 +180,7 @@ please `file an issue`_ along with a detailed description.
 
 .. _MIT license: https://opensource.org/licenses/MIT
 .. _PyPI: https://pypi.org/
+.. _pipx: https://github.com/pypa/pipx
 .. _file an issue: https://github.com/AlexandreKempf/opymizator/issues
 .. _pip: https://pip.pypa.io/
 .. _optuna: https://github.com/optuna/optuna
