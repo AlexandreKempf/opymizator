@@ -44,7 +44,7 @@ tests = [
   "pytest-sugar==1.0.0",
   "pytest-cov==3.0.0",
   "pytest-mock==3.8.2",
-  "mypy==0.971"
+  "mypy==1.9.0"
 ]
 dev = [
   "opymizator[tests]",
